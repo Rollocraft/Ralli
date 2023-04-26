@@ -31,7 +31,7 @@ public class ButtonClickEvent extends ListenerAdapter {
                 embed.setColor(Color.YELLOW);
                 embed.setTitle(event.getUser().getName() + "´s Ticket");
                 embed.setDescription("A Staff member will respond soon!");
-                guild.createTextChannel(event.getMember().getUser().getName()+ "`s Ticket", guild.getCategoryById("1100502249328885810"))
+                guild.createTextChannel(event.getMember().getUser().getName()+ "`s Ticket", guild.getCategoryById(""))
                         .addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL), null)
                         .addPermissionOverride(guild.getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL))
                         .addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL), null)
@@ -41,7 +41,7 @@ public class ButtonClickEvent extends ListenerAdapter {
                 embedTeam.setTitle("Ticket System");
                 embedTeam.addField("Opened by", event.getMember().getAsMention(), true);
                 embedTeam.addField("Datum", formatter.format(date), true);
-                guild.getTextChannelById("1095073367196967083").sendMessageEmbeds(embedTeam.build()).queue();
+                guild.getTextChannelById("").sendMessageEmbeds(embedTeam.build()).queue();
             }
 
         } else if (event.getButton().getId().equals("closeButton")) {
@@ -56,7 +56,7 @@ public class ButtonClickEvent extends ListenerAdapter {
                 embedDelete.addField("" + event.getChannel().getName(),"", false);
                 embedDelete.addField("Closed by", event.getMember().getAsMention(), true);
                 embedDelete.addField("Datum", formatter.format(date), true);
-                guild.getTextChannelById("1095073367196967083").sendMessageEmbeds(embedDelete.build()).queue();
+                guild.getTextChannelById("").sendMessageEmbeds(embedDelete.build()).queue();
                 event.getInteraction().getChannel().delete().queue();
             }
         } else if (event.getButton().getId().equals("claimButton")) {
@@ -73,8 +73,8 @@ public class ButtonClickEvent extends ListenerAdapter {
                         .setColor(Color.YELLOW)
                         .setTitle("Ticket System")
                         .setDescription(event.getInteraction().getUser().getAsMention() + "has claimed "+ "#" + event.getChannel().getName());
-                guild.getTextChannelById("1095073367196967083").sendMessageEmbeds(embedmod.build()).queue();
-                IPermissionHolder iPermissionHolder = event.getGuild().getRoleById("1095277218940342336");
+                guild.getTextChannelById("").sendMessageEmbeds(embedmod.build()).queue();
+                IPermissionHolder iPermissionHolder = event.getGuild().getRoleById("");
                 channel.upsertPermissionOverride(iPermissionHolder).setDenied(Permission.VIEW_CHANNEL).queue();
                 channel.upsertPermissionOverride(event.getMember()).setAllowed(Permission.VIEW_CHANNEL).queue();
             }
