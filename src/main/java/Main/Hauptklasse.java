@@ -22,7 +22,7 @@ public class Hauptklasse {
     public static JDA bot;
 
     public static void main(String[] args) throws InterruptedException{
-        String token = "MTA5MzA5MTYyNTg0NjE5NDE3Ng.GKLQ6c.UwSFBQDQbgVC1spHcI0to_-_kZJJ3SCEC-aR5A";
+        String token = "";
 
         bot = JDABuilder.createDefault(token)
                 .setStatus(OnlineStatus.ONLINE)
@@ -51,7 +51,7 @@ public class Hauptklasse {
 
 
 
-        Guild server = bot.awaitReady().getGuildById("1093089429322735666");
+        Guild server = bot.awaitReady().getGuildById("");
 
         server.updateCommands().addCommands(
                 Commands.slash("service", "service info")
