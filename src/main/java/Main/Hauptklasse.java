@@ -14,9 +14,12 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+
+import java.util.Objects;
 
 public class Hauptklasse {
     public static JDA bot;
@@ -51,16 +54,26 @@ public class Hauptklasse {
 
 
 
-        Guild server = bot.awaitReady().getGuildById("");
+        Guild server = bot.awaitReady().getGuildById("1093089429322735666");
 
-        server.updateCommands().addCommands(
+        Objects.requireNonNull(server).updateCommands().addCommands(
                 Commands.slash("service", "service info")
                         .addOption(OptionType.STRING, "type", "The type of Service", true)
                         .addOption(OptionType.STRING, "info", "Info", true),
-
                 Commands.slash("register", "Register your server/verify")
                         .addOption(OptionType.STRING, "name", "Enter the Name of ur Team", true)
-                        .addOption(OptionType.STRING, "team-members", "(optional) Enter the Amount of Member u have in ur Team", false),
+                        .addOptions(new OptionData(OptionType.STRING, "color", "The Color of ur Team-role! (sadly we dont offer red)", true)
+                                .addChoice("Yellow", "yellow")
+                                .addChoice("Blue", "blue")
+                                .addChoice("Green", "green")
+                                .addChoice("Orange", "orange")
+                                .addChoice("Magenta", "magenta")
+                                .addChoice("Cyan", "cyan")
+                                .addChoice("Pink", "pink")
+                                .addChoice("Gray", "gray")
+                        )
+                        .addOption(OptionType.STRING, "team-members", "(optional) Enter the Amount of Member u have in ur Team", false)
+                        ,
                 Commands.slash("help", "gives a Help menu")
 
         ).queue();

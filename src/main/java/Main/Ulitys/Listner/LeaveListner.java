@@ -9,7 +9,7 @@ public class LeaveListner extends ListenerAdapter {
     @Override
     public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
         Member member = event.getMember();
-        TextChannel channel = event.getGuild().getTextChannelById("");
+        TextChannel channel = event.getGuild().getTextChannelById("1100729432790016041");
         channel.sendMessage( member.getUser().getName()+ " left :(" ).queue();
 
         }
